@@ -34,4 +34,4 @@ if __name__ == "__main__":
     mpred.launch()
 ```
 
-The predictor start to listen on precised host and port 
+The predictor start to listen on precised host and port. You just need to send POST with your JSON data body.

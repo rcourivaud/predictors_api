@@ -10,6 +10,7 @@ setup(
     author_email='r.courivaud@gmail.com',
     description='Python Library used to release Machine Learning predictors on Flask API ',
     install_requires=[
-        "flask"
+        "flask",
+        "flask_cors"
     ]
 )

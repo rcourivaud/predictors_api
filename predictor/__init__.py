@@ -1,14 +1,18 @@
 import abc
 
 from flask import Flask, request, jsonify
+from flask_cors import CORS, cross_origin
 
 
 class Predictor:
-    def __init__(self, name, host, port, route):
+    def __init__(self, name, host, port, route, allow_origin=True):
         self.app = Flask(__name__)
         self.host = host
         self.port = port
         self.route = route
+
+        if allow_origin:
+            self.cors = CORS(self.app, resources={r"/*": {"origins": "*"}})
 
         @self.app.route('/')
         def welcome():
