@@ -17,7 +17,7 @@ class MyPredictor(Predictor):
     super().__init__(name=name, host=self.host, port=self.port, route=self.route) 
 ```
 
-You need to override predict method. This method take in parameters data which is the json send bu post method on route API. 
+You need to override predict method. This method take in parameters data which is the json send by post method on route API. 
 
 ```
 def predict(self, data):
