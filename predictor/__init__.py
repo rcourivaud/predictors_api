@@ -30,12 +30,15 @@ class Predictor:
         :param root_name: String name of the route
         :return:
         """
-        s_route = "/{}".format(root_name)
+        s_route = "/{}/<q>".format(root_name)
 
-        @self.app.route(s_route, methods=["POST"])
-        def function_route():
+        @self.app.route(s_route, methods=["POST", "GET"])
+        def function_route(q):
             if request.method == 'POST':
                 return jsonify(self.predict(request.get_json()))
+            if request.method == 'GET':
+                dict_query = {elt[0]: elt[1] for elt in [elt.split("=") for elt in q.split("&")] if len(elt) > 1}
+                return jsonify(dict_query)
             return request.method
 
     def launch(self):
