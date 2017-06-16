@@ -16,7 +16,7 @@ class Predictor:
 
         @self.app.route('/')
         def welcome():
-            route_link = "http://" + self.host + ":" + str(self.port) + "/" + self.route
+            route_link = "http://" + self.host + ":" + str(self.port) + "/" + self.route + "/q"
 
             return "<h1> This is " + name + " API </h1>\n<p> Route define : " \
                                             "<a href={}>here</a> </p>".format(route_link)
