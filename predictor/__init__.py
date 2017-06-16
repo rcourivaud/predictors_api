@@ -51,7 +51,7 @@ class Predictor:
         :param data: JSON like python dictonnary used to create dataframe to predict
         :return:
         """
-        return "Need to be impletemented"
+        raise NotImplementedError("You need to override predict method")
 
 
 if __name__ == "__main__":
