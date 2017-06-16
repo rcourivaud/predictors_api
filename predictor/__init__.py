@@ -37,8 +37,9 @@ class Predictor:
             if request.method == 'POST':
                 return jsonify(self.predict(request.get_json()))
             if request.method == 'GET':
-                dict_query = {elt[0]: elt[1] for elt in [elt.split("=") for elt in q.split("&")] if len(elt) > 1}
-                return jsonify(self.predict(dict_query))
+                # q = "=".join(itertools.chain.from_iterable([[k, v] for k, v in request.args.to_dict().items()])) + "&" + q
+                # dict_query = {elt[0]: elt[1] for elt in [elt.split("=") for elt in q.split("&")] if len(elt) > 1}
+                return jsonify(self.predict(request.args.to_dict()))
             return request.method
 
     def launch(self):
@@ -56,4 +57,5 @@ class Predictor:
 
 if __name__ == "__main__":
     pred = Predictor("test", "localhost", 1234, "test")
+    pred.predict = lambda x: x
     pred.launch()
