@@ -1,7 +1,7 @@
 import abc
 
 from flask import Flask, request, jsonify
-from flask_cors import CORS, cross_origin
+from flask_cors import CORS
 
 
 class Predictor:
@@ -38,7 +38,7 @@ class Predictor:
                 return jsonify(self.predict(request.get_json()))
             if request.method == 'GET':
                 dict_query = {elt[0]: elt[1] for elt in [elt.split("=") for elt in q.split("&")] if len(elt) > 1}
-                return jsonify(dict_query)
+                return jsonify(self.predict(dict_query))
             return request.method
 
     def launch(self):
